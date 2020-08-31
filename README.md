@@ -1,11 +1,14 @@
 # Goods' Management Api: Bitbox Technical Test
 ## API Resources:
 
-<img src="https://geeksjavamexico.files.wordpress.com/2017/09/spring-framework.png?w=550" width="350">
+<img src="https://geeksjavamexico.files.wordpress.com/2017/09/spring-framework.png?w=550" width="300">
 <img src="https://w7.pngwing.com/pngs/559/367/png-transparent-postgresql-object-relational-database-oracle-database-freebsd-icon-text-logo-head.png" width="300">
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
+## Class Diagram:
+
+<img src="./DocumentationExtras/ClassDiagram.JPG" width="600">
 
 ## Description:
 
