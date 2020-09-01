@@ -15,7 +15,7 @@ import com.guri.goodsManagement.dto.ReportDto;
 import com.guri.goodsManagement.services.interfaces.IReportService;
 
 @RestController
-public class ReportsRestController {
+public class ReportRestController {
 	@Autowired
 	private IReportService reportService;
 	

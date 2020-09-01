@@ -19,4 +19,62 @@ public class ProductDto {
 	private UserDto creator;
 	private List<SupplierDto> suppliers;
 	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Date getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	public List<PriceReductionDto> getPriceReduction() {
+		return priceReduction;
+	}
+	public void setPriceReduction(List<PriceReductionDto> priceReduction) {
+		this.priceReduction = priceReduction;
+	}
+	public EnumProductState getState() {
+		return state;
+	}
+	public void setState(EnumProductState state) {
+		this.state = state;
+	}
+	public UserDto getCreator() {
+		return creator;
+	}
+	public void setCreator(UserDto creator) {
+		this.creator = creator;
+	}
+	public List<SupplierDto> getSuppliers() {
+		return suppliers;
+	}
+	public void setSuppliers(List<SupplierDto> suppliers) {
+		this.suppliers = suppliers;
+	}
+	
+	
+	
 }

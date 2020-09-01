@@ -15,7 +15,7 @@ import com.guri.goodsManagement.dto.SupplierDto;
 import com.guri.goodsManagement.services.interfaces.ISupplierService;
 
 @RestController
-public class SuppliersRestController {
+public class SupplierRestController {
 	@Autowired
 	private ISupplierService supplierService;
 	
