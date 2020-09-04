@@ -21,11 +21,14 @@ import lombok.Data;
 @Data
 @Table(name = "Products")
 public class Product {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "productId")
 	private Long id;
 	@Column
 	private String code;
+	@Column
+	private String description;
 	@Column
 	private Date creationDate;
 	@Column
@@ -38,6 +41,8 @@ public class Product {
 	private User creator;
 	@ManyToMany
 	private List<Supplier> suppliers;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,6 +54,12 @@ public class Product {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public Date getCreationDate() {
 		return creationDate;

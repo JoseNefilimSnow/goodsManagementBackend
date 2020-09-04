@@ -18,26 +18,29 @@ import com.guri.goodsManagement.services.interfaces.IPriceReductionService;
 public class PriceReductionRestController {
 	@Autowired
 	private IPriceReductionService priceRedService;
-	
+
 	@GetMapping("/priceReduction")
-	public List<PriceReductionDto> readAll(){
+	public List<PriceReductionDto> readAll() {
 		return priceRedService.readAll();
 	}
-	
+
 	@GetMapping("/priceReduction/{id}")
-	public PriceReductionDto readOne(@PathVariable Long id ) {
+	public PriceReductionDto readOne(@PathVariable Long id) {
 		return priceRedService.readOne(id);
 	}
+
 	@PostMapping("/priceReduction")
 	public PriceReductionDto create(@RequestBody PriceReductionDto priceReduction) {
 		return priceRedService.create(priceReduction);
 	}
+
 	@PutMapping("/priceReduction/{id}")
-	public PriceReductionDto update(@PathVariable Long id ) {
-		return priceRedService.update(id);
+	public PriceReductionDto update(@PathVariable Long id, @RequestBody PriceReductionDto priceReduction) {
+		return priceRedService.update(id, priceReduction);
 	}
+
 	@DeleteMapping("/priceReduction/{id}")
-	public PriceReductionDto delete(@PathVariable Long id ) {
-		return priceRedService.delete(id);
+	public void delete(@PathVariable Long id) {
+		priceRedService.delete(id);
 	}
 }

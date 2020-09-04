@@ -18,26 +18,29 @@ import com.guri.goodsManagement.services.interfaces.IProductService;
 public class ProductRestController {
 	@Autowired
 	private IProductService productService;
-	
+
 	@GetMapping("/product")
-	public List<ProductDto> readAll(){
+	public List<ProductDto> readAll() {
 		return productService.readAll();
 	}
-	
+
 	@GetMapping("/product/{id}")
-	public ProductDto readOne(@PathVariable Long id ) {
+	public ProductDto readOne(@PathVariable Long id) {
 		return productService.readOne(id);
 	}
+
 	@PostMapping("/product")
 	public ProductDto create(@RequestBody ProductDto product) {
 		return productService.create(product);
 	}
+
 	@PutMapping("/product/{id}")
-	public ProductDto update(@PathVariable Long id ) {
-		return productService.update(id);
+	public ProductDto update(@PathVariable Long id,@RequestBody ProductDto product) {
+		return productService.update(id,product);
 	}
+
 	@DeleteMapping("/product/{id}")
-	public ProductDto delete(@PathVariable Long id ) {
-		return productService.delete(id);
+	public void delete(@PathVariable Long id) {
+		productService.delete(id);
 	}
 }

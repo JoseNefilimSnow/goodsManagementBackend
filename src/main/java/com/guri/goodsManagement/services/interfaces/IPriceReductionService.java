@@ -12,8 +12,8 @@ public interface IPriceReductionService {
 
 	PriceReductionDto create(PriceReductionDto priceReduction);
 
-	PriceReductionDto update(Long id);
+	PriceReductionDto update(Long id, PriceReductionDto priceReduction);
 
-	PriceReductionDto delete(Long id);
+	void delete(Long id);
 
 }

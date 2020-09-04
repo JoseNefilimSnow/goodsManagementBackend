@@ -23,24 +23,62 @@ public class UserDto implements UserDetails {
 
 	private String password;
 	
-	
 	private EnumPermission permission;
 
 	private boolean enabled;
 	
-
 	private List<GrantedAuthority> permissions = new ArrayList<GrantedAuthority>();
 
-//	public UserDto(User user) {
-//		this.username = user.getUsername();
-//		this.password = user.getPassword();
-//		this.permission=user.getPermission();
-//		this.enabled=user.getIsEnabled();
-//		this.permissions.add(new SimpleGrantedAuthority(permission.toString()));
-//		
-//	}
+	public Long getId() {
+		return id;
+	}
 
-	public UserDto() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public EnumPermission getPermission() {
+		return permission;
+	}
+
+	public void setPermission(EnumPermission permission) {
+		this.permission = permission;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public List<GrantedAuthority> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(EnumPermission enumPermission) {
+		this.permissions.add(new SimpleGrantedAuthority(permission.toString()));
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -50,39 +88,20 @@ public class UserDto implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
-
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setPermissions(EnumPermission permission) {
-		this.permissions.add(new SimpleGrantedAuthority(permission.toString()));
-		
-	}
-
-	@Override
-	public String getPassword() {
-		return this.password;
-	}
-
-	@Override
-	public String getUsername() {
-		return this.username;
-	}
-
-
 
 }

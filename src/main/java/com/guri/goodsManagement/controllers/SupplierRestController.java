@@ -18,26 +18,29 @@ import com.guri.goodsManagement.services.interfaces.ISupplierService;
 public class SupplierRestController {
 	@Autowired
 	private ISupplierService supplierService;
-	
+
 	@GetMapping("/supplier")
-	public List<SupplierDto> readAll(){
+	public List<SupplierDto> readAll() {
 		return supplierService.readAll();
 	}
-	
+
 	@GetMapping("/supplier/{id}")
-	public SupplierDto readOne(@PathVariable Long id ) {
+	public SupplierDto readOne(@PathVariable Long id) {
 		return supplierService.readOne(id);
 	}
+
 	@PostMapping("/supplier")
 	public SupplierDto create(@RequestBody SupplierDto supplier) {
 		return supplierService.create(supplier);
 	}
+
 	@PutMapping("/supplier/{id}")
-	public SupplierDto update(@PathVariable Long id ) {
-		return supplierService.update(id);
+	public SupplierDto update(@PathVariable Long id,@RequestBody SupplierDto supplier) {
+		return supplierService.update(id,supplier);
 	}
+
 	@DeleteMapping("/supplier/{id}")
-	public SupplierDto delete(@PathVariable Long id ) {
-		return supplierService.delete(id);
+	public void delete(@PathVariable Long id) {
+		supplierService.delete(id);
 	}
 }

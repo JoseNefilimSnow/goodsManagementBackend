@@ -18,26 +18,29 @@ import com.guri.goodsManagement.services.interfaces.IReportService;
 public class ReportRestController {
 	@Autowired
 	private IReportService reportService;
-	
-	@GetMapping("report")
-	public List<ReportDto> readAll(){
+
+	@GetMapping("/report")
+	public List<ReportDto> readAll() {
 		return reportService.readAll();
 	}
-	
+
 	@GetMapping("/report/{id}")
-	public ReportDto readOne(@PathVariable Long id ) {
+	public ReportDto readOne(@PathVariable Long id) {
 		return reportService.readOne(id);
 	}
+
 	@PostMapping("/report")
 	public ReportDto create(@RequestBody ReportDto report) {
 		return reportService.create(report);
 	}
+
 	@PutMapping("/report/{id}")
-	public ReportDto update(@PathVariable Long id ) {
-		return reportService.update(id);
+	public ReportDto update(@PathVariable Long id,@RequestBody ReportDto report) {
+		return reportService.update(id,report);
 	}
+
 	@DeleteMapping("/report/{id}")
-	public ReportDto delete(@PathVariable Long id ) {
-		return reportService.delete(id);
+	public void delete(@PathVariable Long id) {
+		reportService.delete(id);
 	}
 }

@@ -19,7 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService; //ON login service add implementation
+	private UserDetailsService userDetailsService; 
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -43,13 +43,47 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/login").permitAll();
-		//ADD ALL THE CONTROLLERS AND FILTERS OF ROLES
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/login").permitAll()
+		
+//		ERROR EN ROLES...
+		
+//				.antMatchers(HttpMethod.POST, "/user/**").hasAuthority("ADMIN")
+//				.antMatchers(HttpMethod.PUT, "/user/**").hasAuthority("ADMIN")
+//				.antMatchers(HttpMethod.DELETE, "/user/**").hasAuthority("ADMIN")
+//				.antMatchers(HttpMethod.GET, "/user/**").hasAuthority("ADMIN")
+//				
+//				.antMatchers(HttpMethod.POST, "/priceReduction/**").authenticated()
+//				.antMatchers(HttpMethod.PUT, "/priceReduction/**").authenticated()
+//				.antMatchers(HttpMethod.DELETE, "/priceReduction/**").authenticated()
+//				.antMatchers(HttpMethod.GET, "/priceReduction/**").authenticated()
+//				
+//				.antMatchers(HttpMethod.POST, "/product/**").authenticated()
+//				.antMatchers(HttpMethod.PUT, "/product/**").authenticated()
+//				.antMatchers(HttpMethod.DELETE, "/product/**").hasAuthority("ADMIN")
+//				.antMatchers(HttpMethod.GET, "/product/**").authenticated()
+//				
+//				.antMatchers(HttpMethod.POST, "/report/**").authenticated()
+//				.antMatchers(HttpMethod.PUT, "/report/**").authenticated()
+//				.antMatchers(HttpMethod.DELETE, "/report/**").authenticated()
+//				.antMatchers(HttpMethod.GET, "/report/**").authenticated()
+//
+//				.antMatchers(HttpMethod.POST, "/supplier/**").authenticated()
+//				.antMatchers(HttpMethod.PUT, "/supplier/**").authenticated()
+//				.antMatchers(HttpMethod.DELETE, "/supplier/**").authenticated()
+//				.antMatchers(HttpMethod.GET, "/supplier/**").authenticated()
+//				
+//				.antMatchers(HttpMethod.POST, "/ticket/**").authenticated()
+//				.antMatchers(HttpMethod.PUT, "/ticket/**").authenticated()
+//				.antMatchers(HttpMethod.DELETE, "/ticket/**").authenticated()
+//				.antMatchers(HttpMethod.GET, "/ticket/**").authenticated()
+//				
+//				.and().httpBasic();
 	}
 }

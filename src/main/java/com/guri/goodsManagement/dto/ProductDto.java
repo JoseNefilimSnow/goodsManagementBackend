@@ -14,7 +14,7 @@ public class ProductDto {
 	private String description;
 	private Date creationDate;
 	private Double  price;
-	private List<PriceReductionDto> priceReduction;
+	private List<PriceReductionDto> priceReductions;
 	private EnumProductState state;
 	private UserDto creator;
 	private List<SupplierDto> suppliers;
@@ -50,11 +50,11 @@ public class ProductDto {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public List<PriceReductionDto> getPriceReduction() {
-		return priceReduction;
+	public List<PriceReductionDto> getPriceReductions() {
+		return priceReductions;
 	}
-	public void setPriceReduction(List<PriceReductionDto> priceReduction) {
-		this.priceReduction = priceReduction;
+	public void setPriceReductions(List<PriceReductionDto> priceReductions) {
+		this.priceReductions = priceReductions;
 	}
 	public EnumProductState getState() {
 		return state;

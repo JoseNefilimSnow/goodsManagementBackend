@@ -12,8 +12,8 @@ public interface IProductService {
 
 	ProductDto create(ProductDto product);
 
-	ProductDto update(Long id);
+	ProductDto update(Long id, ProductDto product);
 
-	ProductDto delete(Long id);
+	void delete(Long id);
 
 }

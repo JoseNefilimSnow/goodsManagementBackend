@@ -12,8 +12,8 @@ public interface ISupplierService {
 
 	SupplierDto create(SupplierDto supplier);
 
-	SupplierDto update(Long id);
+	SupplierDto update(Long id, SupplierDto supplier);
 
-	SupplierDto delete(Long id);
+	void delete(Long id);
 
 }

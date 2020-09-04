@@ -12,9 +12,9 @@ public interface ITicketService {
 
 	TicketDto create(TicketDto ticket);
 
-	TicketDto update(Long id);
+	TicketDto update(Long id, TicketDto ticket);
 
-	TicketDto delete(Long id);
+	void delete(Long id);
 
 
 }

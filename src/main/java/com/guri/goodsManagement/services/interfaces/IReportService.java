@@ -12,8 +12,8 @@ public interface IReportService {
 
 	ReportDto create(ReportDto report);
 
-	ReportDto update(Long id);
+	ReportDto update(Long id, ReportDto report);
 
-	ReportDto delete(Long id);
+	void delete(Long id);
 
 }

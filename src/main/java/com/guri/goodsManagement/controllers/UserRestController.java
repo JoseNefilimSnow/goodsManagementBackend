@@ -18,26 +18,29 @@ import com.guri.goodsManagement.services.interfaces.IUserService;
 public class UserRestController {
 	@Autowired
 	private IUserService userService;
-	
+
 	@GetMapping("/user")
-	public List<UserDto> readAll(){
+	public List<UserDto> readAll() {
 		return userService.readAll();
 	}
-	
+
 	@GetMapping("/user/{id}")
-	public UserDto readOne(@PathVariable Long id ) {
+	public UserDto readOne(@PathVariable Long id) {
 		return userService.readOne(id);
 	}
+
 	@PostMapping("/user")
 	public UserDto create(@RequestBody UserDto user) {
-		 return userService.create(user);
+		return userService.create(user);
 	}
+
 	@PutMapping("/user/{id}")
-	public UserDto update(@PathVariable Long id ) {
-		return userService.update(id);
+	public UserDto update(@PathVariable Long id,@RequestBody UserDto user) {
+		return userService.update(id,user);
 	}
+
 	@DeleteMapping("/user/{id}")
-	public UserDto delete(@PathVariable Long id ) {
-		return userService.delete(id);
+	public void delete(@PathVariable Long id) {
+		userService.delete(id);
 	}
 }
