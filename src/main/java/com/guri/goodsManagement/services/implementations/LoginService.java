@@ -13,28 +13,29 @@ import com.guri.goodsManagement.repositories.UserRepository;
 
 @Service
 public class LoginService implements UserDetailsService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private UserConverter userConverter;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		User aux =userRepository.findByUsername(username);
-
-		if(aux.getEnabled()) {
-			return userConverter.convertFromEntityToDto(userRepository.findByUsername(username));				
-		}else {
-			throw new UsernameNotFoundException("Usuario " + username + "bloqueado.");
-		}
-	}
 
 	public UserDto currentLoggedInUser(String username) {
 		
-		return userConverter.convertFromEntityToDto(userRepository.findByUsername(username));
+		return new UserDto(userRepository.findByUsername(username));
 	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+		User aux = userRepository.findByUsername(username);
+		
+		if (aux == null) {
+			throw new UsernameNotFoundException("No se pudo encontrar el usuario");
+		} else {
+			System.out.println("usuario encontrado "+aux.toString());
+			System.out.println("usuario convertido "+new UserDto(aux).toString());
+			return new UserDto(aux);
+		}
+	}
+
 
 }

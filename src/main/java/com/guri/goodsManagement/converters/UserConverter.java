@@ -12,13 +12,13 @@ import com.guri.goodsManagement.entities.User;
 public class UserConverter {
 
 	public UserDto convertFromEntityToDto(User user) {
+		
 		UserDto userDto = new UserDto();
 		userDto.setId(user.getId());
 		userDto.setUsername(user.getUsername());
 		userDto.setPassword(user.getPassword());
 		userDto.setEnabled(user.getEnabled());
 		userDto.setPermission(user.getPermission());
-		userDto.setPermissions(user.getPermission());
 		return userDto;
 	}
 
@@ -29,7 +29,6 @@ public class UserConverter {
 		user.setPassword(userDto.getPassword());
 		user.setEnabled(userDto.isEnabled());
 		user.setPermission(userDto.getPermission());
-		
 		return user;
 	}
 

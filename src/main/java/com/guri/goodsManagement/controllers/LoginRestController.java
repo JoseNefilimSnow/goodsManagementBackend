@@ -13,11 +13,6 @@ public class LoginRestController {
 	
 	@Autowired
 	public LoginService loginService;
-
-	@GetMapping("/test")
-	public void testConn() {
-		System.out.println("TEST CONN ---------- ");
-	}
 	
 	@GetMapping("/login")
 	public UserDto login(@RequestHeader String username) {

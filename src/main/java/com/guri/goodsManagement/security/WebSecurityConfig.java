@@ -6,27 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Autowired
-	private UserDetailsService userDetailsService; 
-
+	private UserDetailsService userDetailsService;
+	
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		return bCryptPasswordEncoder;
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
-
+	
+	@Bean
+	DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+		daoAuthenticationProvider.setUserDetailsService(this.userDetailsService);
+		
+		return daoAuthenticationProvider;
+		
+	}
+	
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfig = new CorsConfiguration();
@@ -40,50 +53,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", corsConfig);
 		return source;
 	}
-
+	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-
+	protected void configure(AuthenticationManagerBuilder auth) {
+		auth.authenticationProvider(authenticationProvider());
 	}
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/login").permitAll()
-		
-//		ERROR EN ROLES...
-		
-//				.antMatchers(HttpMethod.POST, "/user/**").hasAuthority("ADMIN")
-//				.antMatchers(HttpMethod.PUT, "/user/**").hasAuthority("ADMIN")
-//				.antMatchers(HttpMethod.DELETE, "/user/**").hasAuthority("ADMIN")
-//				.antMatchers(HttpMethod.GET, "/user/**").hasAuthority("ADMIN")
-//				
-//				.antMatchers(HttpMethod.POST, "/priceReduction/**").authenticated()
-//				.antMatchers(HttpMethod.PUT, "/priceReduction/**").authenticated()
-//				.antMatchers(HttpMethod.DELETE, "/priceReduction/**").authenticated()
-//				.antMatchers(HttpMethod.GET, "/priceReduction/**").authenticated()
-//				
-//				.antMatchers(HttpMethod.POST, "/product/**").authenticated()
-//				.antMatchers(HttpMethod.PUT, "/product/**").authenticated()
-//				.antMatchers(HttpMethod.DELETE, "/product/**").hasAuthority("ADMIN")
-//				.antMatchers(HttpMethod.GET, "/product/**").authenticated()
-//				
-//				.antMatchers(HttpMethod.POST, "/report/**").authenticated()
-//				.antMatchers(HttpMethod.PUT, "/report/**").authenticated()
-//				.antMatchers(HttpMethod.DELETE, "/report/**").authenticated()
-//				.antMatchers(HttpMethod.GET, "/report/**").authenticated()
-//
-//				.antMatchers(HttpMethod.POST, "/supplier/**").authenticated()
-//				.antMatchers(HttpMethod.PUT, "/supplier/**").authenticated()
-//				.antMatchers(HttpMethod.DELETE, "/supplier/**").authenticated()
-//				.antMatchers(HttpMethod.GET, "/supplier/**").authenticated()
-//				
-//				.antMatchers(HttpMethod.POST, "/ticket/**").authenticated()
-//				.antMatchers(HttpMethod.PUT, "/ticket/**").authenticated()
-//				.antMatchers(HttpMethod.DELETE, "/ticket/**").authenticated()
-//				.antMatchers(HttpMethod.GET, "/ticket/**").authenticated()
-//				
-//				.and().httpBasic();
+		http
+		.authorizeRequests()
+		.antMatchers("/login").permitAll()
+		.antMatchers("/user/**").hasAuthority("ADMIN")
+		.antMatchers(HttpMethod.POST,"/product/**").permitAll()
+		.antMatchers(HttpMethod.PUT,"/product/**").permitAll()
+		.antMatchers(HttpMethod.DELETE,"/product/**").permitAll()
+		.antMatchers(HttpMethod.GET,"/product/**").hasAuthority("ADMIN")
+		.antMatchers("/priceReduction").permitAll()
+		.antMatchers("/report").permitAll()
+		.antMatchers("/supplier").permitAll()
+		.antMatchers("/ticket").permitAll()
+		.anyRequest().authenticated()
+		.and().httpBasic().and().cors().and().csrf().disable();
 	}
 }
