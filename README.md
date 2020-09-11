@@ -22,8 +22,6 @@ The elements that form this project are:
 
     ·   Price Reduction: this element is formed by reduction price, starting date and end date (dates shouldn't overlap)
 
-    ·   Ticket: on this element we will mark the operation (buy/sell), the products, total price and a date.
-
     ·   User: we will design a standard user with username, password(encrypted),role and a field to mark if the user is active.
 
     ·   Reports: this element will hold extra information on products.
