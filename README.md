@@ -44,9 +44,7 @@ Those elements will be used for completing the next tasks:
 
 ## User Manual (Spanish):
 
-    Esta aplicación está compuesta por PostgreSQL y Spring Boot de Java, como prerequisitos debemos tener ambas instaladas en nuestro ordenador.
-
-### PostgreSQL:
+Esta aplicación está compuesta por PostgreSQL y Spring Boot de Java, como prerequisitos debemos tener ambas instaladas en nuestro ordenador.
 
 Descargamos la version usada para esta implementación 
 (http://www.enterprisedb.com/postgresql-tutorial-resources-training?cid=48). 
