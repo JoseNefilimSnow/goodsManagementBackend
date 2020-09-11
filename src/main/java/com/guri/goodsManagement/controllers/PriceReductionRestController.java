@@ -31,7 +31,13 @@ public class PriceReductionRestController {
 
 	@PostMapping("/priceReduction")
 	public PriceReductionDto create(@RequestBody PriceReductionDto priceReduction) {
+		System.out.println(priceReduction.toString());
 		return priceRedService.create(priceReduction);
+	}
+	
+	@PostMapping("/checkDates")
+	public Boolean checkDates(@RequestBody PriceReductionDto[] priceReductions) {
+		return priceRedService.checkDates(priceReductions);
 	}
 
 	@PutMapping("/priceReduction/{id}")

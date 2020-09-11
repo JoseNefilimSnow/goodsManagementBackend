@@ -44,9 +44,8 @@ public class ReportService implements IReportService{
 	@Override
 	public ReportDto update(Long id, ReportDto report) {
 		Report oldReport = reportRep.findById(id).get();
-		oldReport.setProducts(productConv.convertFromDtoListToEntityList(report.getProducts()));
+		oldReport.setProductCode(report.getProductCode());
 		oldReport.setCreator(userRep.findByUsername(report.getCreator().getUsername()));
-		oldReport.setType(report.getType());
 		oldReport.setReason(report.getReason());
 		reportRep.save(oldReport);
 		return report;

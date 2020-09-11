@@ -22,8 +22,7 @@ public class ReportConverter {
 		reportDto.setId(report.getId());
 		reportDto.setCreator(userConv.convertFromEntityToDto(report.getCreator()));
 		reportDto.setReason(report.getReason());
-		reportDto.setType(report.getType());
-		reportDto.setProducts(productConv.convertFromEntityListToDtoList(report.getProducts()));
+		reportDto.setProductCode(report.getProductCode());
 		return reportDto;
 	}
 
@@ -32,8 +31,7 @@ public class ReportConverter {
 		report.setId(reportDto.getId());
 		report.setCreator(userConv.convertFromDtoToEntity(reportDto.getCreator()));
 		report.setReason(reportDto.getReason());
-		report.setType(reportDto.getType());
-		report.setProducts(productConv.convertFromDtoListToEntityList(reportDto.getProducts()));
+		report.setProductCode(reportDto.getProductCode());
 		return report;
 	}
 

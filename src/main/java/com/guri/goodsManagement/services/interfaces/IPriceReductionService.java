@@ -13,6 +13,8 @@ public interface IPriceReductionService {
 	PriceReductionDto create(PriceReductionDto priceReduction);
 
 	PriceReductionDto update(Long id, PriceReductionDto priceReduction);
+	
+	Boolean checkDates(PriceReductionDto[] priceReductionList);
 
 	void delete(Long id);
 

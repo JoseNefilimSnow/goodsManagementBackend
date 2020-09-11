@@ -16,4 +16,6 @@ public interface IProductService {
 
 	void delete(Long id);
 
+	void deactivate(Long id);
+
 }

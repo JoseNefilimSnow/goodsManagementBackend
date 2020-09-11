@@ -31,6 +31,7 @@ public class ReportRestController {
 
 	@PostMapping("/report")
 	public ReportDto create(@RequestBody ReportDto report) {
+		System.out.println(report);
 		return reportService.create(report);
 	}
 

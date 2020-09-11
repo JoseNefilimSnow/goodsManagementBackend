@@ -35,4 +35,10 @@ public class PriceReductionDto {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	@Override
+	public String toString() {
+		return "PriceReductionDto [id=" + id + ", reducedPrice=" + reducedPrice + ", startingDate=" + startingDate
+				+ ", endDate=" + endDate + "]";
+	}
+	
 }

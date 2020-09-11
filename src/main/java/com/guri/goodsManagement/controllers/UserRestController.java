@@ -32,6 +32,7 @@ public class UserRestController {
 
 	@PostMapping("/user")
 	public UserDto create(@RequestBody UserDto user) {
+		
 		return userService.create(user);
 	}
 

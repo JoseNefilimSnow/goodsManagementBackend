@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.guri.goodsManagement.enums.EnumProductState;
 
 import lombok.Data;
@@ -38,6 +41,7 @@ public class Product {
 	@Column
 	private EnumProductState state;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User creator;
 	@ManyToMany
 	private List<Supplier> suppliers;

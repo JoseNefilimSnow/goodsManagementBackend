@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guri.goodsManagement.converters.PriceReductionConverter;
 import com.guri.goodsManagement.converters.ProductConverter;
 import com.guri.goodsManagement.converters.SupplierConverter;
 import com.guri.goodsManagement.dto.ProductDto;
 import com.guri.goodsManagement.entities.Product;
+import com.guri.goodsManagement.enums.EnumProductState;
 import com.guri.goodsManagement.repositories.ProductRepository;
 import com.guri.goodsManagement.repositories.UserRepository;
 import com.guri.goodsManagement.services.interfaces.IProductService;
@@ -23,6 +25,8 @@ public class ProductService implements IProductService{
 	private UserRepository userRep;
 	@Autowired
 	private SupplierConverter supplierConv;
+	@Autowired
+	private PriceReductionConverter prConv;
 	
 	@Override
 	public List<ProductDto> readAll() {
@@ -49,10 +53,17 @@ public class ProductService implements IProductService{
 		oldProduct.setDescription(product.getDescription());
 		oldProduct.setPrice(product.getPrice());
 		oldProduct.setState(product.getState());
+		oldProduct.setPriceReductions(prConv.convertFromDtoListToEntityList(product.getPriceReductions()));
 		oldProduct.setSuppliers(supplierConv.convertFromDtoListToEntityList(product.getSuppliers()));
+		productRep.save(oldProduct);
 		return productConv.convertFromEntityToDto(productRep.findById(id).get());
 	}
-
+	
+	@Override
+	public void deactivate(Long id) {
+		Product product = productRep.findById(id).get();
+		product.setState(EnumProductState.DISCOUNTED);
+	}
 	@Override
 	public void delete(Long id) {
 		productRep.deleteById(id);

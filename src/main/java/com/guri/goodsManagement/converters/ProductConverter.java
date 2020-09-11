@@ -41,7 +41,7 @@ public class ProductConverter {
 		product.setCreationDate(productDto.getCreationDate());
 		product.setPrice(productDto.getPrice());
 		product.setPriceReductions(priceRedConv.convertFromDtoListToEntityList(productDto.getPriceReductions()));
-		product.setState(product.getState());
+		product.setState(productDto.getState());
 		product.setCreator(userConv.convertFromDtoToEntity(productDto.getCreator()));
 		product.setSuppliers(supplierConv.convertFromDtoListToEntityList(productDto.getSuppliers()));
 		return product;

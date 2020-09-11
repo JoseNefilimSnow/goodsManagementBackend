@@ -3,6 +3,8 @@ package com.guri.goodsManagement.converters;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.guri.goodsManagement.dto.UserDto;
@@ -10,7 +12,7 @@ import com.guri.goodsManagement.entities.User;
 
 @Service
 public class UserConverter {
-
+	PasswordEncoder passEnc = new BCryptPasswordEncoder();
 	public UserDto convertFromEntityToDto(User user) {
 		
 		UserDto userDto = new UserDto();
@@ -26,7 +28,7 @@ public class UserConverter {
 		User user = new User();
 		user.setId(userDto.getId());
 		user.setUsername(userDto.getUsername());
-		user.setPassword(userDto.getPassword());
+		user.setPassword(passEnc.encode(userDto.getPassword()));
 		user.setEnabled(userDto.isEnabled());
 		user.setPermission(userDto.getPermission());
 		return user;

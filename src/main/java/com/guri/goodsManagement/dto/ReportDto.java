@@ -2,17 +2,14 @@ package com.guri.goodsManagement.dto;
 
 import java.util.List;
 
-import com.guri.goodsManagement.enums.EnumReportType;
-
 import lombok.Data;
 
 @Data
 public class ReportDto {
 	private Long id;
-	private EnumReportType type;
 	private String reason;
 	private UserDto creator;
-	private List<ProductDto> product;
+	private String productCode;
 	
 	
 	public Long getId() {
@@ -21,12 +18,7 @@ public class ReportDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public EnumReportType getType() {
-		return type;
-	}
-	public void setType(EnumReportType type) {
-		this.type = type;
-	}
+
 	public String getReason() {
 		return reason;
 	}
@@ -39,12 +31,14 @@ public class ReportDto {
 	public void setCreator(UserDto creator) {
 		this.creator = creator;
 	}
-	public List<ProductDto> getProducts() {
-		return product;
+	public String getProductCode() {
+		return productCode;
 	}
-	public void setProducts(List<ProductDto> product) {
-		this.product = product;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
+	
+	
 	
 	
 }

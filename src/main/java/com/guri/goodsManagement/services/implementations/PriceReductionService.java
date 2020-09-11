@@ -12,11 +12,12 @@ import com.guri.goodsManagement.repositories.PriceReductionRepository;
 import com.guri.goodsManagement.services.interfaces.IPriceReductionService;
 
 @Service
-public class PriceReductionService implements IPriceReductionService{
+public class PriceReductionService implements IPriceReductionService {
 	@Autowired
 	private PriceReductionRepository priceRedRep;
 	@Autowired
 	private PriceReductionConverter priceConv;
+
 	@Override
 	public List<PriceReductionDto> readAll() {
 		return priceConv.convertFromEntityListToDtoList(priceRedRep.findAll());
@@ -29,10 +30,10 @@ public class PriceReductionService implements IPriceReductionService{
 
 	@Override
 	public PriceReductionDto create(PriceReductionDto priceReduction) {
+		System.out.println(priceReduction.toString());
 		priceRedRep.save(priceConv.convertFromDtoToEntity(priceReduction));
 		return priceReduction;
 	}
-
 
 	@Override
 	public PriceReductionDto update(Long id, PriceReductionDto priceReduction) {
@@ -45,9 +46,32 @@ public class PriceReductionService implements IPriceReductionService{
 	}
 
 	@Override
+	public Boolean checkDates(PriceReductionDto[] priceReductionList) {
+		if (priceReductionList.length > 1) {
+			int count = 0;
+			for (int i = 0; i < priceReductionList.length; i++) {
+				count++;
+				System.out.println("Entro veces: " + count);
+				if (i + 1 == priceReductionList.length) {
+					break;
+				} else {
+					Long aux = priceReductionList[i + 1].getStartingDate().getTime()
+							- priceReductionList[i].getEndDate().getTime();
+					System.out.println("Numero resultante " + aux);
+					if (aux < 0) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else {
+			return true;
+		}
+	}
+
+	@Override
 	public void delete(Long id) {
 		priceRedRep.deleteById(id);
 	}
-
 
 }
