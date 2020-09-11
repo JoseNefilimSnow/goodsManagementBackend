@@ -48,27 +48,30 @@ Those elements will be used for completing the next tasks:
 
 ### PostgreSQL:
 
-    Descargamos la version usada para esta implementación (http://www.enterprisedb.com/postgresql-tutorial-resources-training?cid=48). 
+Descargamos la version usada para esta implementación 
+(http://www.enterprisedb.com/postgresql-tutorial-resources-training?cid=48). 
 
-    Una vez descargado, ejecutamos el instalador y se nos pedirá crear una contraseña que será la maestra para gestionar las conexiones.
+Una vez descargado, ejecutamos el instalador y se nos pedirá crear una contraseña que será la maestra para gestionar las conexiones.
 
-    Abrimos pgAdmin 4 e introducimos la contraseña para acceder a 'Servers' , 'PostgreSql 12' y damos botón derecho a 'Databases' y creamos la base de datos que se usará en nuestra API.
+Abrimos pgAdmin 4 e introducimos la contraseña para acceder a 'Servers' , 'PostgreSql 12' y damos botón derecho a 'Databases' y creamos la base de datos que se usará en nuestra API.
 
-    Descargamos también una IDE que nos permita programar en Java/Spring, en mi caso elegí STS (https://download.springsource.com/release/STS4/4.7.2.RELEASE/dist/e4.16/spring-tool-suite-4-4.7.2.RELEASE-e4.16.0-win32.win32.x86_64.self-extracting.jar).
+Descargamos también una IDE que nos permita programar en Java/Spring, en mi caso elegí STS 
+(https://download.springsource.com/release/STS4/4.7.2.RELEASE/dist/e4.16/spring-tool-suite-4-4.7.2.RELEASE-e4.16.0-win32.win32.x86_64.self-extracting.jar).
 
-    Hacemos un git clone https://github.com/JoseNefilimSnow/goodsManagementBackend.git y descargamos el proyecto.
+Hacemos un git clone 
+https://github.com/JoseNefilimSnow/goodsManagementBackend.git y descargamos el proyecto.
 
-    Tras instalarlo, en la esquina superior izquierda, seleccionamos "File", "Import" e importamos un proyecto de Maven:
+Tras instalarlo, en la esquina superior izquierda, seleccionamos "File", "Import" e importamos un proyecto de Maven:
 
 <img src="./DocumentationExtras/import.JPG" width="500">
 
-    y luego seleccionamos la carpeta del proyecto:
+y luego seleccionamos la carpeta del proyecto:
 
 <img src="./DocumentationExtras/import2.JPG" width="500">
 
 
-    finalmente solo tenemos que cambiar la contraseña en el aplications.properties con el nombre de la base de datos (goodsManagement en mi caso) y la contraseña anteriormente elegida
+finalmente solo tenemos que cambiar la contraseña en el aplications.properties con el nombre de la base de datos (goodsManagement en mi caso) y la contraseña anteriormente elegida
 
 <img src="./DocumentationExtras/password.JPG" width="500">
 
-    Ahora solo quedaría iniciar la aplicación y se ejecutaría el servidor quien se encargaría de montar las tablas, relaciones y ejecutar un pequeño script sql que insertará diferentes ejemplos que se podran ver en la aplicación FrontEnd.
+Ahora solo quedaría iniciar la aplicación y se ejecutaría el servidor quien se encargaría de montar las tablas, relaciones y ejecutar un pequeño script sql que insertará diferentes ejemplos que se podran ver en la aplicación FrontEnd.
