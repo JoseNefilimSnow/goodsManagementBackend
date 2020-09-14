@@ -66,7 +66,7 @@ y luego seleccionamos la carpeta del proyecto:
 <img src="./DocumentationExtras/import2.JPG" width="500">
 
 
-finalmente solo tenemos que cambiar la contraseña en el aplications.properties con el nombre de la base de datos (goodsManagement en mi caso) y la contraseña anteriormente elegida
+finalmente en el aplications.properties cambiamos los datos de el nombre de la base de datos (goodsManagement en mi caso) y la contraseña anteriormente elegida
 
 <img src="./DocumentationExtras/password.JPG" width="500">
 
