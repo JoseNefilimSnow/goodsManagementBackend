@@ -70,4 +70,4 @@ finalmente en el aplications.properties cambiamos los datos de el nombre de la b
 
 <img src="./DocumentationExtras/password.JPG" width="500">
 
-Ahora solo quedaría iniciar la aplicación y se ejecutaría el servidor quien se encargaría de montar las tablas, relaciones y ejecutar un pequeño script sql que insertará diferentes ejemplos que se podran ver en la aplicación FrontEnd.
+Ahora solo quedaría iniciar la aplicación y se ejecutaría el servidor quien se encargaría de montar las tablas, relaciones y ejecutar un pequeño script sql que insertará diferentes ejemplos.
